@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Admin Panel — AI Video Generator by Joe</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+<!-- LOGIN -->
+<div id="loginView" class="admin-card">
+  <div class="logo-big">Joe<span>AI</span></div>
+  <h2 class="admin-title">🔐 Admin Login</h2>
+  <p class="admin-desc">Masukkan kata laluan admin untuk teruskan.<br><small>(Lalai: <b>joeadmin</b> — boleh ditukar selepas login)</small></p>
+  <input id="adminPass" type="password" class="input" placeholder="Kata laluan admin" autocomplete="current-password">
+  <button id="loginBtn" class="btn-generate full">Log Masuk</button>
+  <a href="index.html" class="back-link">← Kembali ke Generator</a>
+</div>
+
+<!-- CONFIG -->
+<div id="configView" class="admin-card wide hidden">
+  <div class="logo-big">Joe<span>AI</span></div>
+  <h2 class="admin-title">⚙️ Tetapan API</h2>
+  <p class="admin-desc">API key ini disimpan dalam pelayar anda dan digunakan oleh semua fitur generator.</p>
+
+  <label class="lbl">API Key (nexabot.id)</label>
+  <input id="apiKey" type="text" class="input mono" placeholder="nxb_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+
+  <div class="divider"></div>
+  <h3 class="sub-title">🧠 Model untuk setiap fitur</h3>
+
+  <label class="lbl">Model — Text to Video (t2v)</label>
+  <input id="model_t2v" type="text" class="input mono" placeholder="cth: default / nama model">
+
+  <label class="lbl">Model — Start Frame to Video (sfv)</label>
+  <input id="model_sfv" type="text" class="input mono" placeholder="cth: default / nama model">
+
+  <label class="lbl">Model — Ingredients to Video (i2v)</label>
+  <input id="model_i2v" type="text" class="input mono" placeholder="cth: default / nama model">
+
+  <label class="lbl">Model — Reference to Video (r2v)</label>
+  <input id="model_r2v" type="text" class="input mono" placeholder="cth: default / nama model">
+
+  <button id="saveBtn" class="btn-generate full">💾 Simpan Tetapan</button>
+
+  <div class="divider"></div>
+  <h3 class="sub-title">🔑 Tukar Kata Laluan Admin</h3>
+  <input id="newPass" type="password" class="input" placeholder="Kata laluan baru (biar kosong jika kekal)">
+  <button id="passBtn" class="btn-secondary full">Tukar Kata Laluan</button>
+
+  <div class="divider"></div>
+  <button id="testBtn" class="btn-secondary full">🧪 Uji Sambungan API (cek kredit)</button>
+  <div id="testResult" class="test-result"></div>
+
+  <a href="index.html" class="back-link">← Kembali ke Generator</a>
+  <button id="logoutBtn" class="logout">Log Keluar</button>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="js/admin.js"></script>
+</body>
+</html>

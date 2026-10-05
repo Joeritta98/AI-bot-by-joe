@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Video Generator by Joe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<aside id="sidebar" class="sidebar open">
+  <div class="sidebar-head">
+    <div class="logo-mini">Joe<span>AI</span></div>
+    <button id="closeSidebar" class="icon-btn" aria-label="Tutup menu">✕</button>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-label">AI VIDEO GENERATOR</div>
+    <button class="nav-item active" data-mode="t2v">🎬 Text to Video</button>
+    <button class="nav-item" data-mode="sfv">🖼️ Start Frame to Video</button>
+    <button class="nav-item" data-mode="i2v">🧩 Ingredients to Video</button>
+    <button class="nav-item" data-mode="r2v">🎥 Reference to Video</button>
+    <div class="nav-label">LAIN-LAIN</div>
+    <a class="nav-item link" href="#gallery" id="navGallery">🗂️ Hasil Saya</a>
+    <a class="nav-item link" href="admin.html">🔐 Admin Panel</a>
+  </nav>
+  <div class="sidebar-foot">v1.0 • by Joe</div>
+</aside>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <button id="openSidebar" class="icon-btn burger" aria-label="Buka menu">☰</button>
+  <h1 class="site-title">AI Video Generator <span>by Joe</span></h1>
+  <div id="creditBadge" class="credit-badge" title="Baki kredit">💳 —</div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+
+  <!-- PANEL: T2V -->
+  <section class="panel" data-panel="t2v">
+    <h2 class="panel-title">🎬 Text to Video</h2>
+    <p class="panel-desc">Jana video AI hanya dengan penerangan teks.</p>
+    <label class="lbl">Prompt</label>
+    <textarea class="input prompt" rows="4" placeholder="cth: sebuah kucing berlari di padang rumput saat matahari terbenam..."></textarea>
+    <div class="row">
+      <div class="col">
+        <label class="lbl">Orientasi</label>
+        <select class="input ratio">
+          <option value="1">Landscape 16:9</option>
+          <option value="2">Portrait 9:16</option>
+        </select>
+      </div>
+      <div class="col">
+        <label class="lbl">Kualiti</label>
+        <select class="input resolution">
+          <option value="720">720p</option>
+          <option value="1080">1080p</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-generate" data-submit="t2v">⚡ Generate Video</button>
+  </section>
+
+  <!-- PANEL: SFV -->
+  <section class="panel hidden" data-panel="sfv">
+    <h2 class="panel-title">🖼️ Start Frame to Video</h2>
+    <p class="panel-desc">Upload 1 gambar sebagai frame permulaan, AI animasikannya.</p>
+    <label class="lbl">Prompt</label>
+    <textarea class="input prompt" rows="4" placeholder="cth: Animasikan foto ini, kamera zoom perlahan..."></textarea>
+    <label class="lbl">Gambar (1 keping) <span class="req">*wajib</span></label>
+    <input type="file" class="input media" accept="image/*">
+    <div class="preview media-preview"></div>
+    <div class="row">
+      <div class="col">
+        <label class="lbl">Orientasi</label>
+        <select class="input ratio">
+          <option value="1">Landscape 16:9</option>
+          <option value="2">Portrait 9:16</option>
+        </select>
+      </div>
+      <div class="col">
+        <label class="lbl">Kualiti</label>
+        <select class="input resolution">
+          <option value="720">720p</option>
+          <option value="1080">1080p</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-generate" data-submit="sfv">⚡ Generate Video</button>
+  </section>
+
+  <!-- PANEL: I2V -->
+  <section class="panel hidden" data-panel="i2v">
+    <h2 class="panel-title">🧩 Ingredients to Video</h2>
+    <p class="panel-desc">Upload 1–3 gambar, AI gabungkan menjadi satu video.</p>
+    <label class="lbl">Prompt</label>
+    <textarea class="input prompt" rows="4" placeholder="cth: Gabungkan gambar ini jadi video sinematik..."></textarea>
+    <label class="lbl">Gambar (1–3 keping) <span class="req">*wajib</span></label>
+    <input type="file" class="input media" accept="image/*" multiple data-max="3">
+    <div class="preview media-preview multi"></div>
+    <div class="row">
+      <div class="col">
+        <label class="lbl">Orientasi</label>
+        <select class="input ratio">
+          <option value="1">Landscape 16:9</option>
+          <option value="2">Portrait 9:16</option>
+        </select>
+      </div>
+      <div class="col">
+        <label class="lbl">Kualiti</label>
+        <select class="input resolution">
+          <option value="720">720p</option>
+          <option value="1080">1080p</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-generate" data-submit="i2v">⚡ Generate Video</button>
+  </section>
+
+  <!-- PANEL: R2V -->
+  <section class="panel hidden" data-panel="r2v">
+    <h2 class="panel-title">🎥 Reference to Video</h2>
+    <p class="panel-desc">Upload 1 video rujukan (+ 1 gambar pilihan), AI buat versi baru.</p>
+    <label class="lbl">Prompt</label>
+    <textarea class="input prompt" rows="4" placeholder="cth: Buat versi baru dari video ini dengan gaya anime..."></textarea>
+    <label class="lbl">Video Rujukan <span class="req">*wajib</span></label>
+    <input type="file" class="input media video-media" accept="video/*">
+    <label class="lbl">Gambar Tambahan (pilihan)</label>
+    <input type="file" class="input media image-media" accept="image/*">
+    <div class="preview media-preview"></div>
+    <div class="row">
+      <div class="col">
+        <label class="lbl">Orientasi</label>
+        <select class="input ratio">
+          <option value="0">Ikut video sumber</option>
+          <option value="1">Landscape 16:9</option>
+          <option value="2">Portrait 9:16</option>
+        </select>
+      </div>
+      <div class="col">
+        <label class="lbl">Kualiti</label>
+        <select class="input resolution">
+          <option value="720">720p</option>
+          <option value="1080">1080p</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-generate" data-submit="r2v">⚡ Generate Video</button>
+  </section>
+
+  <!-- RESULT -->
+  <section id="resultBox" class="panel result hidden">
+    <h2 class="panel-title">📦 Hasil Generate</h2>
+    <div class="status-line"><span id="statusDot" class="dot"></span><span id="statusText">Menunggu...</span></div>
+    <div class="progressbar"><div id="progressFill" class="fill"></div></div>
+    <div id="resultMedia" class="result-media"></div>
+    <a id="downloadBtn" class="btn-download hidden" download="hasil.mp4">⬇️ Muat Turun Hasil</a>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="panel">
+    <h2 class="panel-title">🗂️ Hasil Saya</h2>
+    <p class="panel-desc">Senarai generate terdahulu (disimpan dalam pelayar anda).</p>
+    <div id="galleryGrid" class="gallery-grid"><p class="empty">Belum ada hasil. Mula generate di atas! ✨</p></div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast hidden"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
